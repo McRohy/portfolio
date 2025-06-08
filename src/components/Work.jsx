@@ -7,13 +7,13 @@ const works = [
   {
     title: 'Survivor',
     description: 'Survivor is semestral project which is created in Java and ispired by game Crossy Road.',
-    video: '/survivorResized.mp4',
+    video: './survivorResized.mp4',
     year: '2023'
   },
   {
     title: 'WarOfClash',
     description: 'WarOfClash is a semester project implemented in Java, designed as a real-time strategy game inspired by the original game Clash Royale.',
-    video: '/warofclash.mp4',
+    video: './warofclash.mp4',
     year: '2024'
   },
   {
@@ -25,7 +25,7 @@ const works = [
   {
     title: 'Invitation',
     description: 'Invitation to the 3rd Educational Event for Patients with Cardiovascular Disease. This work was created at the request of the client (Kardiocentrum Nitra).',
-    img: '/invitationNR.png',
+    img: './invitationNR.png',
     year: '2025'
   }
 ]

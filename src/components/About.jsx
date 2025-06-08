@@ -6,7 +6,7 @@ const About = () => {
    
       <div className="rounded-full border-[12px] border-cyan-500 p-1 overflow-hidden shadow-lg mb-6">
         <img
-          src="/profilePicture.png"
+          src="./profilePicture.png"
           className="h-60 w-60 object-cover rounded-full "
         />
       </div>
