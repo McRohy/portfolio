@@ -17,7 +17,7 @@ const works = [
   {
     title: 'PathPulse',
     description: 'PathPulse is a semester-long Kotlin project created for passionate travelers who like to track their journeys.',
-    video: './pp_mob.mp4',
+    video: './pp_mobVersion2.mp4',
     year: '2025'
   },
   {
