@@ -25,6 +25,12 @@ const works = [
     description: 'Invitation to the 3rd Educational Event for Patients with Cardiovascular Disease. This work was created at the request of the client (Kardiocentrum Nitra).',
     img: './invitationNR.png',
     year: '2025'
+  },
+  {
+    title: 'Desings',
+    description: 'My favourite part of work to school are desings of my presentations',
+    img: './ppDesigns.png',
+    year: '2024/25'
   }
 ]
 
