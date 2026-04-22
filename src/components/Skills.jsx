@@ -1,5 +1,3 @@
-import React from 'react'
-
 const mySkills = [
   { name: 'Microsoft Office Programs', level: 70 },
   { name: 'UML - Unified Modeling Language', level: 65 },
@@ -19,7 +17,7 @@ function Skills() {
         <h2 className="text-5xl font-bold mb-4">My Skills</h2>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {mySkills.map((skill, index, icon) => (
+          {mySkills.map((skill, index) => (
             <div key={index}>
               <div className="flex justify-between mb-1">
                 <span className="font-bold">
