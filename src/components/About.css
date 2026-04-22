@@ -6,6 +6,18 @@
   padding: 140px 32px 80px;
 }
 
+.cursor {
+  margin-left: 4px;
+  color: var(--accent);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 .hero-grid {
   display: grid;
   grid-template-columns: 1.3fr 1fr;

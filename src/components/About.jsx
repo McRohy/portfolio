@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { useLanguage } from '../context/LanguageContext.js'
 import './About.css'
 
@@ -5,17 +6,41 @@ export default function About() {
   const { texts } = useLanguage()
   const t = texts.hero
 
+  const fullText = t.greeting + ' ' + t.name + ' ' + t.tagline
+  const [typed, setTyped] = useState('')
+  const isDone = typed === fullText
+
+  useEffect(() => {
+    setTyped('')
+    let i = 0
+    const interval = setInterval(() => {
+      i++
+      setTyped(fullText.substring(0, i))
+      if (i >= fullText.length) {
+        clearInterval(interval)
+      }
+    }, 60)
+    return () => clearInterval(interval)
+  }, [fullText])
+
   return (
     <section id="About" className="hero-section">
       <div className="hero-grid">
 
         <div className="hero-copy">
-          
-
           <h1 className="hero-title">
-            {t.greeting} <span className="accent">{t.name}</span>
-            <br />
-            {t.tagline}
+            {isDone ? (
+              <>
+                {t.greeting} <span className="accent">{t.name}</span>
+                <br />
+                {t.tagline}
+              </>
+            ) : (
+              <>
+                {typed}
+                <span className="cursor">|</span>
+              </>
+            )}
           </h1>
 
           <p className="hero-lede">{t.lede}</p>
