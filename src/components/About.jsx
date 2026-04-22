@@ -1,36 +1,67 @@
-import React from 'react'
+import { useLanguage } from '../context/LanguageContext.js'
+import './About.css'
 
-const About = () => {
+export default function About() {
+  const { texts } = useLanguage()
+  const t = texts.hero
+
   return (
-    <div id="About" className="flex flex-col items-center justify-center text-center min-h-screen px-6 py-16">
-   
-      <div className="rounded-full border-[12px] border-cyan-500 p-1 overflow-hidden shadow-lg mb-6">
-        <img
-          src="./profilePicture.png"
-          className="h-60 w-60 object-cover rounded-full "
-        />
+    <section id="About" className="hero-section">
+      <div className="hero-grid">
+
+        <div className="hero-copy">
+          
+
+          <h1 className="hero-title">
+            {t.greeting} <span className="accent">{t.name}</span>
+            <br />
+            {t.tagline}
+          </h1>
+
+          <p className="hero-lede">{t.lede}</p>
+
+          <div className="hero-buttons">
+            <a href="#Work" className="btn btn-primary">{t.ctaPrimary}</a>
+            <a href="#Contact" className="btn btn-secondary">{t.ctaSecondary}</a>
+          </div>
+        </div>
+
+        <div className="id-card">
+          <div className="id-card-head">
+            <div className="id-card-avatar">
+              <img src="./profilePicture.png" alt="Matej Roháč" />
+            </div>
+            <div>
+              <b>Matej Roháč</b>
+              <span>{t.card.subtitle}</span>
+            </div>
+          </div>
+
+          <div className="id-card-rows">
+            <div className="id-card-row">
+              <span className="label">{t.card.roleLabel}</span>
+              <span className="value">{t.card.roleValue}</span>
+            </div>
+            <div className="id-card-row">
+              <span className="label">{t.card.schoolLabel}</span>
+              <span className="value">{t.card.schoolValue}</span>
+            </div>
+            <div className="id-card-row">
+              <span className="label">{t.card.focusLabel}</span>
+              <span className="value">{t.card.focusValue}</span>
+            </div>
+            <div className="id-card-row">
+              <span className="label">{t.card.experienceLabel}</span>
+              <span className="value">{t.card.experienceValue}</span>
+            </div>
+            <div className="id-card-row">
+              <span className="label">{t.card.statusLabel}</span>
+              <span className="value ok">{t.card.statusValue}</span>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <p className="text-black font-medium mb-4">Matej Roháč</p>
-
-      <h1 className="text-4xl md:text-5xl font-bold text-black">
-        Passionate <br />
-        <span className="text-cyan-500">Student of Computer Science</span>
-      </h1>
-      <p className="mt-6 text-black max-w-xl">
-     {/* Som študent informatiky a ridenia na fakulte FRI - Fakulta riadenia a informatiky v Žiline 
-      s orientáciou na vývoj softvéru, návrh systémov v UML a prácu s Oracle SQL. 
-      Vyznačujem sa spoľahlivosťou, komunikatívnosťou a cieľavedomosťou a nie len to,
-      rád prijím nové výzvy. 
-      */}
-
-      I am a student of Computer Science and Management at the Faculty of Management Science and Informatics (FRI) in Žilina.
-      My focus is on software development, system design using UML and working with Oracle SQL. 
-      I am reliable, communicative, and goal-oriented 
-      and I like taking on new challenges.
-      </p>
-    </div>
-  );
-};
-
-
-export default About
+    </section>
+  )
+}

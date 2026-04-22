@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useLanguage } from '../context/LanguageContext.js'
+import './Navbar.css'
 
 const sectionIds = ['About', 'Skills', 'Work', 'Contact']
 
