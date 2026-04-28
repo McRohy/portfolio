@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
 import { useLanguage } from '../context/LanguageContext.js'
+import { useTypewriter } from '../hooks/useTypewriter'
+import { useModal } from '../hooks/useModal'
 import './About.css'
 
 export default function About() {
@@ -7,28 +8,8 @@ export default function About() {
   const t = texts.hero
 
   const fullText = t.greeting + ' ' + t.name + ' ' + t.tagline
-  const [typed, setTyped] = useState('')
-  const [isTechModalOpen, setIsTechModalOpen] = useState(false)
-  const isDone = typed === fullText
-
-  useEffect(() => {
-    setTyped('')
-    let i = 0
-    const interval = setInterval(() => {
-      i++
-      setTyped(fullText.substring(0, i))
-      if (i >= fullText.length) {
-        clearInterval(interval)
-      }
-    }, 60)
-    return () => clearInterval(interval)
-  }, [fullText])
-
-  const handleBackdropClick = (e) => {
-    if (e.target === e.currentTarget) {
-      setIsTechModalOpen(false)
-    }
-  }
+  const { typed, isDone } = useTypewriter(fullText, 60)
+  const techModal = useModal()
 
   return (
     <>
@@ -87,7 +68,7 @@ export default function About() {
               <span className="label">{t.card.experienceLabel}</span>
               <span className="value">{t.card.experienceValue}</span>
             </div>
-            <div className="id-card-row id-card-row-clickable" onClick={() => setIsTechModalOpen(true)}>
+            <div className="id-card-row id-card-row-clickable" onClick={techModal.open}>
               <span className="label">{t.card.techLabel}</span>
               <span className="value tech-link">{t.card.techValue}</span>
             </div>
@@ -101,10 +82,10 @@ export default function About() {
       </div>
     </section>
 
-    {isTechModalOpen && (
-      <div className="tech-modal-backdrop" onClick={handleBackdropClick}>
+    {techModal.isOpen && (
+      <div className="tech-modal-backdrop" onClick={techModal.handleBackdropClick}>
         <div className="tech-modal-content">
-          <button className="tech-modal-close" onClick={() => setIsTechModalOpen(false)}>×</button>
+          <button className="tech-modal-close" onClick={techModal.close}>×</button>
           <h3 className="tech-modal-title">{t.techModal.title}</h3>
           {t.techModal.groups.map((group) => (
             <div key={group.label} className="tech-group">

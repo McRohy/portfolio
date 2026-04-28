@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useLanguage } from '../context/LanguageContext.js'
+import { useAutoResetStatus } from '../hooks/useAutoResetStatus'
 import './Contact.css'
 
 export default function Contact() {
@@ -10,7 +11,7 @@ export default function Contact() {
   const [email, setEmail] = useState('')
   const [topic, setTopic] = useState(t.form.topicOptions[0])
   const [message, setMessage] = useState('')
-  const [status, setStatus] = useState(null)
+  const [status, setStatus] = useAutoResetStatus(5000)
 
   const handleSubmit = async (e) => {
   e.preventDefault()
@@ -40,7 +41,6 @@ export default function Contact() {
       setEmail('')
       setTopic(t.form.topicOptions[0])
       setMessage('')
-      setTimeout(() => setStatus(null), 5000)
     } else {
       setStatus('error')
     }

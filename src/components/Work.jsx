@@ -1,6 +1,6 @@
-import { useRef } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { useLanguage } from '../context/LanguageContext.js'
+import { useHorizontalScroll } from '../hooks/useHorizontalScroll'
 import './Work.css'
 
 const projects = [
@@ -13,15 +13,7 @@ const projects = [
 export default function Work() {
   const { texts } = useLanguage()
   const t = texts.work
-  const scrollRef = useRef(null)
-
-  const scrollLeft = () => {
-    scrollRef.current.scrollLeft -= 380
-  }
-
-  const scrollRight = () => {
-    scrollRef.current.scrollLeft += 380
-  }
+  const { ref: scrollRef, scrollLeft, scrollRight } = useHorizontalScroll(380)
 
   return (
     <section id="Work" className="work-section reveal">

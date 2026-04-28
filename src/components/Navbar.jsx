@@ -1,25 +1,12 @@
-import { useEffect, useState } from 'react'
 import { useLanguage } from '../context/LanguageContext.js'
+import { useActiveSection } from '../hooks/useActiveSection'
 import './Navbar.css'
 
 const sectionIds = ['About', 'Work', 'Contact']
 
 function Navbar() {
   const { texts, lang, toggle } = useLanguage()
-  const [active, setActive] = useState('About')
-
-  useEffect(() => {
-    const handleScroll = () => {
-      for (const id of sectionIds) {
-        const el = document.getElementById(id)
-        if (el && el.getBoundingClientRect().top < 200) {
-          setActive(id)
-        }
-      }
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  const active = useActiveSection(sectionIds, 200)
 
   const labels = {
     About: texts.nav.about,
