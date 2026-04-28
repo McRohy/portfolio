@@ -10,13 +10,44 @@ export default function Contact() {
   const [email, setEmail] = useState('')
   const [topic, setTopic] = useState(t.form.topicOptions[0])
   const [message, setMessage] = useState('')
+  const [status, setStatus] = useState(null)
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const subject = topic + ' — ' + name
-    const body = message + '\n\n— ' + name + ' (' + email + ')'
-    window.location.href = 'mailto:' + t.form.emailAddress + '?subject=' + subject + '&body=' + body
+  const handleSubmit = async (e) => {
+  e.preventDefault()
+  setStatus('sending')
+
+  const token = '8713370979:AAFIMziMV4ufdw3jEMEFRzFKGee9lcaBD9M'
+  const chatId = '6189100792'
+
+  const text =
+    'NOVA SPRAVA\n\n' +
+    'Meno: ' + name + '\n' +
+    'Email: ' + email + '\n' +
+    'Téma: ' + topic + '\n\n' +
+    message
+
+  try {
+    const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: chatId, text })
+    })
+
+    const result = await res.json()
+    if (result.ok) {
+      setStatus('sent')
+      setName('')
+      setEmail('')
+      setTopic(t.form.topicOptions[0])
+      setMessage('')
+      setTimeout(() => setStatus(null), 5000)
+    } else {
+      setStatus('error')
+    }
+  } catch {
+    setStatus('error')
   }
+}
 
   return (
     <section id="Contact" className="contact-section reveal">
@@ -103,7 +134,16 @@ export default function Contact() {
               />
             </div>
 
-            <button type="submit" className="send-btn">{t.form.sendButton}</button>
+            <button type="submit" className="send-btn" disabled={status === 'sending'}>
+              {status === 'sending' ? 'Odosielam…' : t.form.sendButton}
+            </button>
+
+            {status === 'sent' && (
+              <p className="form-msg success">✓ Správa bola odoslaná. Ozvem sa čo najskôr!</p>
+            )}
+            {status === 'error' && (
+              <p className="form-msg error">Niečo sa pokazilo. Skús to znova alebo mi napíš priamo na tvoj@email.com</p>
+            )}
           </form>
         </div>
 
