@@ -8,6 +8,7 @@ export default function About() {
 
   const fullText = t.greeting + ' ' + t.name + ' ' + t.tagline
   const [typed, setTyped] = useState('')
+  const [isTechModalOpen, setIsTechModalOpen] = useState(false)
   const isDone = typed === fullText
 
   useEffect(() => {
@@ -23,7 +24,14 @@ export default function About() {
     return () => clearInterval(interval)
   }, [fullText])
 
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setIsTechModalOpen(false)
+    }
+  }
+
   return (
+    <>
     <section id="About" className="hero-section reveal">
       <div className="hero-grid">
 
@@ -79,6 +87,10 @@ export default function About() {
               <span className="label">{t.card.experienceLabel}</span>
               <span className="value">{t.card.experienceValue}</span>
             </div>
+            <div className="id-card-row id-card-row-clickable" onClick={() => setIsTechModalOpen(true)}>
+              <span className="label">{t.card.techLabel}</span>
+              <span className="value tech-link">{t.card.techValue}</span>
+            </div>
             <div className="id-card-row">
               <span className="label">{t.card.statusLabel}</span>
               <span className="value ok">{t.card.statusValue}</span>
@@ -88,5 +100,25 @@ export default function About() {
 
       </div>
     </section>
+
+    {isTechModalOpen && (
+      <div className="tech-modal-backdrop" onClick={handleBackdropClick}>
+        <div className="tech-modal-content">
+          <button className="tech-modal-close" onClick={() => setIsTechModalOpen(false)}>×</button>
+          <h3 className="tech-modal-title">{t.techModal.title}</h3>
+          {t.techModal.groups.map((group) => (
+            <div key={group.label} className="tech-group">
+              <h4 className="tech-group-label">{group.label}</h4>
+              <div className="tech-pills">
+                {group.items.map((item) => (
+                  <span key={item} className="tech-pill">{item}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+    </>
   )
 }

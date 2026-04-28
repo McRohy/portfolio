@@ -214,6 +214,85 @@
   color: var(--accent);
 }
 
+/* Tech link row */
+.id-card-row-clickable {
+  cursor: pointer;
+}
+
+.id-card-row-clickable:hover {
+  background: #F0F4F6;
+}
+
+.tech-link {
+  color: var(--accent);
+}
+
+/* Tech modal */
+.tech-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.tech-modal-content {
+  background: white;
+  border-radius: 14px;
+  padding: 28px;
+  width: 90%;
+  max-width: 460px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.tech-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.tech-modal-title {
+  font-size: 20px;
+  margin: 0 0 18px;
+}
+
+.tech-group {
+  margin-bottom: 18px;
+}
+
+.tech-group-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 8px;
+}
+
+.tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tech-pill {
+  background: rgba(31, 184, 212, 0.1);
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .hero-section {
