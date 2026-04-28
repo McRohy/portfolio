@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
-import ReactCountryFlag from 'react-country-flag'
 import { useLanguage } from '../context/LanguageContext.js'
 import './Navbar.css'
 
-const sectionIds = ['About', 'Skills', 'Work', 'Contact']
+const sectionIds = ['About', 'Work', 'Contact']
 
 function Navbar() {
-  const { texts, lang, setLang } = useLanguage()
+  const { texts, lang, toggle } = useLanguage()
   const [active, setActive] = useState('About')
 
   useEffect(() => {
@@ -24,7 +23,6 @@ function Navbar() {
 
   const labels = {
     About: texts.nav.about,
-    Skills: texts.nav.skills,
     Work: texts.nav.work,
     Contact: texts.nav.contact,
   }
@@ -42,17 +40,8 @@ function Navbar() {
       </ul>
 
       <div className="lang-toggle">
-        <button
-          className={lang === 'sk' ? 'active' : ''}
-          onClick={() => setLang('sk')}
-        >
-          <ReactCountryFlag countryCode="SK" svg style={{ width: '18px', height: '13px' }} />
-        </button>
-        <button
-          className={lang === 'en' ? 'active' : ''}
-          onClick={() => setLang('en')}
-        >
-          <ReactCountryFlag countryCode="GB" svg style={{ width: '18px', height: '13px' }} />
+        <button onClick={toggle}>
+          {lang === 'sk' ? 'EN' : 'SK'}
         </button>
       </div>
     </nav>

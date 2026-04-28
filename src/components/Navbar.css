@@ -27,6 +27,8 @@
 .navbar-links a {
   display: inline-block;
   padding: 8px 16px;
+  min-width: 80px;
+  text-align: center;
   border-radius: 999px;
   color: #ccc;
   text-decoration: none;
@@ -46,24 +48,50 @@
   margin-left: 8px;
   padding-left: 8px;
   border-left: 1px solid #333;
-  display: flex;
-  gap: 4px;
 }
 
 .lang-toggle button {
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 1px;
-  opacity: 0.4;
-  transition: opacity 0.2s;
-  
+  padding: 4px 8px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #ccc;
+  transition: color 0.2s;
 }
 
 .lang-toggle button:hover {
-  opacity: 0.8;
+  color: var(--accent);
 }
 
-.lang-toggle button.active {
-  opacity: 1;
+/* Mobile */
+@media (max-width: 600px) {
+  .navbar {
+    top: 12px;
+    padding: 5px 6px;
+    font-size: 12px;
+    gap: 2px;
+  }
+
+  .navbar-links {
+    gap: 2px;
+  }
+
+  .navbar-links a {
+    padding: 6px 10px;
+    min-width: 60px;
+  }
+
+  .lang-toggle {
+    margin-left: 4px;
+    padding-left: 4px;
+  }
+
+  .lang-toggle button {
+    padding: 4px 6px;
+    font-size: 11px;
+  }
 }
