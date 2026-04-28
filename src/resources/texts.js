@@ -87,10 +87,10 @@ export const texts = {
       sub: "Krátke ukážky mojej práce — väčšinou semestrálne zadania a pár osobných experimentov.",
       items: {
         survivor: {
-          cat: "Java · Hra",
-          title: "Survivor",
-          desc: "Semestrálny projekt v Jave, inšpirovaný hrou Crossy Road.",
-          year: "2023",
+          cat: "SpringBoot · React · Docker · Postgres",
+          title: "MediRoh",
+          desc: "Bakalársky projekt pre telemedicínskou platformu pre pacienty s možnosťou vzdialeného sledovania zdravotných parametrov pacienta.",
+          year: "2026",
         },
         warOfClash: {
           cat: "Java · Stratégia",
@@ -245,10 +245,10 @@ export const texts = {
       sub: "Short examples of my work — mostly semester assignments and a few personal experiments.",
       items: {
         survivor: {
-          cat: "Java · Game",
-          title: "Survivor",
-          desc: "A semester project in Java, inspired by the game Crossy Road.",
-          year: "2023",
+          cat: "SpringBoot · React · Docker · Postgres",
+          title: "MediRoh",
+          desc: "Bachelor project for a telemedicine platform for patients with the remote monitoring of patient health parameters.",
+          year: "2026",
         },
         warOfClash: {
           cat: "Java · Strategy",
