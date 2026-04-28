@@ -143,7 +143,7 @@ export const texts = {
       },
     },
     footer: {
-      built: "Postavené v React · Vite",
+      copyright: "© 2026 Matej Roháč",
       version: "v2",
     },
   },
@@ -291,7 +291,7 @@ export const texts = {
       },
     },
     footer: {
-      built: "Built in React · Vite",
+      copyright: "© 2026 Matej Roháč",
       version: "v2",
     },
   },
