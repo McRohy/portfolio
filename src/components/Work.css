@@ -1,0 +1,160 @@
+.work-section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+
+.work-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.work-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+}
+
+.work-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.work-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.work-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  color: var(--ink);
+}
+
+.work-title .accent {
+  color: var(--accent);
+}
+
+.work-sub {
+  color: var(--muted);
+  font-size: 15px;
+  margin: 0 0 40px;
+}
+
+/* Carousel */
+.work-carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.work-list {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 4px;
+}
+
+.work-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.work-card {
+  flex-shrink: 0;
+  width: 280px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.work-card video,
+.work-card img {
+  width: 100%;
+  height: auto;
+  min-height: 350px;
+  object-fit: cover;
+  display: block;
+}
+
+.work-body {
+  padding: 16px 18px;
+}
+
+.work-cat {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.work-card h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  margin: 6px 0;
+  color: var(--ink);
+}
+
+.year-badge {
+  background: var(--ink);
+  color: white;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.work-card p {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0;
+}
+
+/* Scroll buttons */
+.scroll-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.scroll-btn:hover {
+  background: var(--accent);
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .work-section {
+    padding: 50px 16px;
+  }
+
+  .work-title {
+    font-size: 30px;
+  }
+
+  .work-card {
+    width: 240px;
+  }
+
+  .work-card video,
+  .work-card img {
+    height: 280px;
+  }
+}

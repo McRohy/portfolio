@@ -1,36 +1,105 @@
-import React from 'react'
+import { useLanguage } from '../context/LanguageContext.js'
+import { useTypewriter } from '../hooks/useTypewriter'
+import { useModal } from '../hooks/useModal'
+import './About.css'
 
-const About = () => {
+export default function About() {
+  const { texts } = useLanguage()
+  const t = texts.hero
+
+  const fullText = t.greeting + ' ' + t.name + ' ' + t.tagline
+  const { typed, isDone } = useTypewriter(fullText, 60)
+  const techModal = useModal()
+
   return (
-    <div id="About" className="flex flex-col items-center justify-center text-center min-h-screen px-6 py-16">
-   
-      <div className="rounded-full border-[12px] border-cyan-500 p-1 overflow-hidden shadow-lg mb-6">
-        <img
-          src="./profilePicture.png"
-          className="h-60 w-60 object-cover rounded-full "
-        />
+    <>
+    <section id="About" className="hero-section reveal">
+      <div className="hero-grid">
+
+        <div className="hero-copy">
+          <h1 className="hero-title">
+            {isDone ? (
+              <>
+                {t.greeting} <span className="accent">{t.name}</span>
+                <br />
+                {t.tagline}
+              </>
+            ) : (
+              <>
+                {typed}
+                <span className="cursor">|</span>
+              </>
+            )}
+          </h1>
+
+          <p className={`hero-lede fade-in ${isDone ? 'visible' : ''}`}>{t.lede}</p>
+
+          <div className={`hero-buttons fade-in ${isDone ? 'visible' : ''}`}>
+            <a href="#Work" className="btn btn-primary">{t.ctaPrimary}</a>
+            <a href="#Contact" className="btn btn-secondary">{t.ctaSecondary}</a>
+          </div>
+        </div>
+
+        <div className={`id-card fade-in ${isDone ? 'visible' : ''}`}>
+          <div className="id-card-head">
+            <div className="id-card-avatar">
+              <img src="./profilePicture.png" alt="Matej Roháč" />
+            </div>
+            <div>
+              <b>Matej Roháč</b>
+              <span>{t.card.subtitle}</span>
+            </div>
+          </div>
+
+          <div className="id-card-rows">
+            <div className="id-card-row">
+              <span className="label">{t.card.roleLabel}</span>
+              <span className="value">{t.card.roleValue}</span>
+            </div>
+            <div className="id-card-row">
+              <span className="label">{t.card.schoolLabel}</span>
+              <span className="value">{t.card.schoolValue}</span>
+            </div>
+            <div className="id-card-row">
+              <span className="label">{t.card.focusLabel}</span>
+              <span className="value">{t.card.focusValue}</span>
+            </div>
+            <div className="id-card-row">
+              <span className="label">{t.card.experienceLabel}</span>
+              <span className="value">{t.card.experienceValue}</span>
+            </div>
+            <div className="id-card-row id-card-row-clickable" onClick={techModal.open}>
+              <span className="label">{t.card.techLabel}</span>
+              <span className="value tech-link">{t.card.techValue}</span>
+            </div>
+            <div className="id-card-row">
+              <span className="label">{t.card.statusLabel}</span>
+              <span className="value ok">{t.card.statusValue}</span>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <p className="text-black font-medium mb-4">Matej Roháč</p>
+    </section>
 
-      <h1 className="text-4xl md:text-5xl font-bold text-black">
-        Passionate <br />
-        <span className="text-cyan-500">Student of Computer Science</span>
-      </h1>
-      <p className="mt-6 text-black max-w-xl">
-     {/* Som študent informatiky a ridenia na fakulte FRI - Fakulta riadenia a informatiky v Žiline 
-      s orientáciou na vývoj softvéru, návrh systémov v UML a prácu s Oracle SQL. 
-      Vyznačujem sa spoľahlivosťou, komunikatívnosťou a cieľavedomosťou a nie len to,
-      rád prijím nové výzvy. 
-      */}
-
-      I am a student of Computer Science and Management at the Faculty of Management Science and Informatics (FRI) in Žilina.
-      My focus is on software development, system design using UML and working with Oracle SQL. 
-      I am reliable, communicative, and goal-oriented 
-      and I like taking on new challenges.
-      </p>
-    </div>
-  );
-};
-
-
-export default About
+    {techModal.isOpen && (
+      <div className="tech-modal-backdrop" onClick={techModal.handleBackdropClick}>
+        <div className="tech-modal-content">
+          <button className="tech-modal-close" onClick={techModal.close}>×</button>
+          <h3 className="tech-modal-title">{t.techModal.title}</h3>
+          {t.techModal.groups.map((group) => (
+            <div key={group.label} className="tech-group">
+              <h4 className="tech-group-label">{group.label}</h4>
+              <div className="tech-pills">
+                {group.items.map((item) => (
+                  <span key={item} className="tech-pill">{item}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+    </>
+  )
+}

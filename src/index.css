@@ -1,6 +1,37 @@
 @import "tailwindcss";
 
+:root {
+  --bg: #F4F5F7;
+  --ink: #0A0A0B;
+  --muted: #6C7078;
+  --accent: #1FB8D4;
+  --border: #DEE0E4;
+
+  --mono: 'JetBrains Mono', monospace;
+  --ui: 'Geist', sans-serif;
+}
+
 html {
   scroll-behavior: smooth;
-  
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--ui);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }

@@ -1,28 +1,154 @@
-import React from 'react'
-import { FaEnvelope, FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
+import { useState } from 'react'
+import { useLanguage } from '../context/LanguageContext.js'
+import { useAutoResetStatus } from '../hooks/useAutoResetStatus'
+import './Contact.css'
 
-function Contact() {
-  return (
-    <div id="Contact" 
-        className="h-[40vh] py-10 flex flex-col items-center justify-center text-center px-4">
-      <h2 className="text-5xl text-white mb-6">Contact</h2>
-    
-      <div className="flex gap-10 text-4xl text-white">
-        <a href="mailto:matej.rohac24@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-300 hover:scale-125 transform transition-transform duration-300">
-          <FaEnvelope />
-        </a>
-        <a href="https://github.com/McRohy" target="_blank" rel="noopener noreferrer" className="hover:text-gray-700 hover:scale-125 transform transition-transform duration-300">
-          <FaGithub />
-        </a>
-        <a href="https://linkedin.com/in/matej-roh%C3%A1%C4%8D-826510333/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 hover:scale-125 transform transition-transform duration-300">
-          <FaLinkedin />
-        </a>
-        <a href="https://www.instagram.com/matroh24/" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 hover:scale-125 transform transition-transform duration-300">
-          <FaInstagram />
-        </a>
-      </div>
-    </div>
-  )
+export default function Contact() {
+  const { texts } = useLanguage()
+  const t = texts.contact
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [topic, setTopic] = useState(t.form.topicOptions[0])
+  const [message, setMessage] = useState('')
+  const [status, setStatus] = useAutoResetStatus(5000)
+
+  const handleSubmit = async (e) => {
+  e.preventDefault()
+  setStatus('sending')
+
+  const token = '8713370979:AAFIMziMV4ufdw3jEMEFRzFKGee9lcaBD9M'
+  const chatId = '6189100792'
+
+  const text =
+    'NOVA SPRAVA\n\n' +
+    'Meno: ' + name + '\n' +
+    'Email: ' + email + '\n' +
+    'Téma: ' + topic + '\n\n' +
+    message
+
+  try {
+    const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: chatId, text })
+    })
+
+    const result = await res.json()
+    if (result.ok) {
+      setStatus('sent')
+      setName('')
+      setEmail('')
+      setTopic(t.form.topicOptions[0])
+      setMessage('')
+    } else {
+      setStatus('error')
+    }
+  } catch {
+    setStatus('error')
+  }
 }
 
-export default Contact
+  return (
+    <section id="Contact" className="contact-section reveal">
+
+      <div className="contact-header">
+        <span className="contact-num">03</span>
+        <span className="contact-rule"></span>
+        <span className="contact-label">{t.sectionLabel}</span>
+      </div>
+
+      <h2 className="contact-title">
+        {t.title} <span className="accent">{t.titleAccent}</span>
+      </h2>
+
+      <p className="contact-sub">{t.sub}</p>
+
+      <div className="contact-card">
+
+        <div className="why-me">
+          <span className="mono-label">{t.whyMe.label}</span>
+          <h3 className="why-title">
+            {t.whyMe.title} <span className="accent">{t.whyMe.titleAccent}</span>
+          </h3>
+          <p className="why-lede">{t.whyMe.lede}</p>
+
+          <div className="perks">
+            {t.whyMe.perks.map((perk, i) => (
+              <div key={i} className="perk">
+                <span className="perk-num">0{i + 1}</span>
+                <div>
+                  <h4>{perk.title}</h4>
+                  <p>{perk.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="contact-form-wrap">
+          <span className="mono-label">{t.form.label}</span>
+          <h3 className="form-title">{t.form.title}</h3>
+
+          <form onSubmit={handleSubmit} className="contact-form">
+            <div className="form-row">
+              <div className="field">
+                <label>{t.form.nameLabel}</label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder={t.form.namePlaceholder}
+                  required
+                />
+              </div>
+              <div className="field">
+                <label>{t.form.emailLabel}</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={t.form.emailPlaceholder}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="field">
+              <label>{t.form.topicLabel}</label>
+              <select value={topic} onChange={(e) => setTopic(e.target.value)}>
+                {t.form.topicOptions.map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="field">
+              <label>{t.form.messageLabel}</label>
+              <textarea
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder={t.form.messagePlaceholder}
+                rows="4"
+                required
+              />
+            </div>
+
+            <button type="submit" className="send-btn" disabled={status === 'sending'}>
+              {status === 'sending' ? 'Odosielam…' : t.form.sendButton}
+            </button>
+
+            {status === 'sent' && (
+              <p className="form-msg success">✓ Správa bola odoslaná. Ozvem sa čo najskôr!</p>
+            )}
+            {status === 'error' && (
+              <p className="form-msg error">Niečo sa pokazilo. Skús to znova alebo mi napíš priamo na tvoj@email.com</p>
+            )}
+          </form>
+        </div>
+
+      </div>
+
+    </section>
+  )
+}

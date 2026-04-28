@@ -1,0 +1,25 @@
+.footer {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.footer-version {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 24px 16px;
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+}
