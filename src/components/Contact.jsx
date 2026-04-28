@@ -19,7 +19,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="Contact" className="contact-section">
+    <section id="Contact" className="contact-section reveal">
 
       <div className="contact-header">
         <span className="contact-num">03</span>

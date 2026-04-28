@@ -24,7 +24,7 @@ export default function Work() {
   }
 
   return (
-    <section id="Work" className="work-section">
+    <section id="Work" className="work-section reveal">
 
       <div className="work-header">
         <span className="work-num">02</span>

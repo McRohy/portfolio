@@ -24,7 +24,7 @@ export default function About() {
   }, [fullText])
 
   return (
-    <section id="About" className="hero-section">
+    <section id="About" className="hero-section reveal">
       <div className="hero-grid">
 
         <div className="hero-copy">
@@ -43,15 +43,15 @@ export default function About() {
             )}
           </h1>
 
-          <p className="hero-lede">{t.lede}</p>
+          <p className={`hero-lede fade-in ${isDone ? 'visible' : ''}`}>{t.lede}</p>
 
-          <div className="hero-buttons">
+          <div className={`hero-buttons fade-in ${isDone ? 'visible' : ''}`}>
             <a href="#Work" className="btn btn-primary">{t.ctaPrimary}</a>
             <a href="#Contact" className="btn btn-secondary">{t.ctaSecondary}</a>
           </div>
         </div>
 
-        <div className="id-card">
+        <div className={`id-card fade-in ${isDone ? 'visible' : ''}`}>
           <div className="id-card-head">
             <div className="id-card-avatar">
               <img src="./profilePicture.png" alt="Matej Roháč" />
