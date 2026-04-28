@@ -2,7 +2,6 @@ export const texts = {
   sk: {
     nav: {
       about: 'O mne',
-      skills: 'Zručnosti',
       work: 'Práce',
       contact: 'Kontakt',
     },
@@ -71,23 +70,6 @@ export const texts = {
         yearValue: '2026',
       },
     },
-    skills: {
-      sectionLabel: 'Zručnosti',
-      title: 'Čo',
-      titleAccent: 'ovládam.',
-      sub: 'Mix nástrojov pre vývoj softvéru, návrh systémov a vizuálnu prácu.',
-      notes: {
-        uml: 'návrh systémov, diagramy',
-        office: 'Word · Excel · PowerPoint',
-        sql: 'dopyty, návrh schémy',
-        java: 'OOP, malé desktop apky',
-        canva: 'rýchle vizuály, postery',
-        photoshop: 'retuš, layout',
-        figma: 'UI dizajn, prototypy',
-        kotlin: 'Android, skripty',
-        react: 'komponenty, state',
-      },
-    },
     work: {
       sectionLabel: 'Práce',
       title: 'Vybrané',
@@ -95,19 +77,28 @@ export const texts = {
       sub: 'Krátke ukážky mojej práce — väčšinou semestrálne zadania a pár osobných experimentov.',
       items: {
         survivor: {
-          desc: 'Survivor je semestrálny projekt vytvorený v Jave, inšpirovaný hrou Crossy Road.',
+          cat: 'Java · Hra',
+          title: 'Survivor',
+          desc: 'Semestrálny projekt v Jave, inšpirovaný hrou Crossy Road.',
+          year: '2023',
         },
         warOfClash: {
-          desc: 'WarOfClash je semestrálny projekt v Jave — real-time stratégia inšpirovaná hrou Clash Royale.',
+          cat: 'Java · Stratégia',
+          title: 'WarOfClash',
+          desc: 'Real-time stratégia v Jave inšpirovaná hrou Clash Royale.',
+          year: '2024',
         },
         pathPulse: {
-          desc: 'PathPulse je semestrálny Kotlin projekt pre cestovateľov, ktorí si radi sledujú svoje výlety.',
+          cat: 'Kotlin · Mobile',
+          title: 'PathPulse',
+          desc: 'Kotlin projekt pre cestovateľov, ktorí si radi sledujú svoje výlety.',
+          year: '2025',
         },
         invitation: {
-          desc: 'Pozvánka na 3. edukačné podujatie pre pacientov s kardiovaskulárnym ochorením. Na zákazku klienta (Kardiocentrum Nitra).',
-        },
-        designs: {
-          desc: 'Moja obľúbená časť školskej práce — dizajny prezentácií.',
+          cat: 'Print · Healthcare',
+          title: 'Pozvánka',
+          desc: 'Pozvánka na 3. edukačné podujatie pre pacientov s kardiovaskulárnym ochorením. Klient: Kardiocentrum Nitra.',
+          year: '2025',
         },
       },
     },
@@ -131,7 +122,6 @@ export const texts = {
   en: {
     nav: {
       about: 'About',
-      skills: 'Skills',
       work: 'Work',
       contact: 'Contact',
     },
@@ -200,23 +190,6 @@ export const texts = {
         yearValue: '2026',
       },
     },
-    skills: {
-      sectionLabel: 'Skills',
-      title: 'What I',
-      titleAccent: 'know.',
-      sub: 'A mix of tools for software development, system design and visual work.',
-      notes: {
-        uml: 'system design, diagrams',
-        office: 'Word · Excel · PowerPoint',
-        sql: 'queries, schema design',
-        java: 'OOP, small desktop apps',
-        canva: 'quick visuals, posters',
-        photoshop: 'retouching, layout',
-        figma: 'UI design, prototyping',
-        kotlin: 'Android, scripting',
-        react: 'components, state',
-      },
-    },
     work: {
       sectionLabel: 'Work',
       title: 'Selected',
@@ -224,19 +197,28 @@ export const texts = {
       sub: 'Short examples of my work — mostly semester assignments and a few personal experiments.',
       items: {
         survivor: {
-          desc: 'Survivor is a semester project built in Java, inspired by the game Crossy Road.',
+          cat: 'Java · Game',
+          title: 'Survivor',
+          desc: 'A semester project in Java, inspired by the game Crossy Road.',
+          year: '2023',
         },
         warOfClash: {
-          desc: 'WarOfClash is a semester project in Java — a real-time strategy game inspired by Clash Royale.',
+          cat: 'Java · Strategy',
+          title: 'WarOfClash',
+          desc: 'A real-time strategy in Java inspired by Clash Royale.',
+          year: '2024',
         },
         pathPulse: {
-          desc: 'PathPulse is a semester Kotlin project created for travelers who like to track their journeys.',
+          cat: 'Kotlin · Mobile',
+          title: 'PathPulse',
+          desc: 'A Kotlin project for travelers who like to track their journeys.',
+          year: '2025',
         },
         invitation: {
-          desc: 'Invitation to the 3rd Educational Event for Patients with Cardiovascular Disease. Created at the request of the client (Kardiocentrum Nitra).',
-        },
-        designs: {
-          desc: 'My favourite part of school work — designs of my presentations.',
+          cat: 'Print · Healthcare',
+          title: 'Invitation',
+          desc: 'Invitation to the 3rd Educational Event for Patients with Cardiovascular Disease. Client: Kardiocentrum Nitra.',
+          year: '2025',
         },
       },
     },
