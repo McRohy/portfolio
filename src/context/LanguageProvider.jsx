@@ -14,7 +14,7 @@ export default function LanguageProvider({ children }) {
   }
 
   return (
-    <LanguageContext.Provider value={{ lang, toggle, texts: texts[lang] }}>
+    <LanguageContext.Provider value={{ lang, setLang, toggle, texts: texts[lang] }}>
       {children}
     </LanguageContext.Provider>
   )
