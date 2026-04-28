@@ -4,9 +4,9 @@ import { useLanguage } from '../context/LanguageContext.js'
 import './Work.css'
 
 const projects = [
-  { id: 'survivor',   video: './survivorResized.mp4' },
-  { id: 'warOfClash', video: './warofclash.mp4' },
+  { id: 'survivor',   img: './telemedicine2.png' },
   { id: 'pathPulse',  video: './pp_mobVersion2.mp4' },
+  { id: 'warOfClash', video: './warofclash.mp4' },
   { id: 'invitation', img: './invitationNR.png' },
 ]
 
