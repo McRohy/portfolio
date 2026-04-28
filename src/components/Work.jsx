@@ -4,7 +4,7 @@ import { useHorizontalScroll } from '../hooks/useHorizontalScroll'
 import './Work.css'
 
 const projects = [
-  { id: 'survivor',   img: './telemedicine2.png' },
+  { id: 'survivor',   img: './telemedicine.png' },
   { id: 'pathPulse',  video: './pp_mobVersion2.mp4' },
   { id: 'warOfClash', video: './warofclash.mp4' },
   { id: 'invitation', img: './invitationNR.png' },
